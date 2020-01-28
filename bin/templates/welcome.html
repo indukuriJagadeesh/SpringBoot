@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Welcome</title>
+</head>
+<body>
+
+	Welcome to Springboot thymeleaf application...!
+
+	<iframe width="100%" height="100%" id="myframe" name="myframe" src="users">
+	<p>Hi Iframe..!</p>
+	</iframe>
+	<form action="#" th:action="@{/testSave}" th:object="${form}"
+		method="post" target="myframe">
+		<fieldset>
+			<input type="submit" id="submitButton" th:value="Save" />
+			<table>
+				<thead>
+					<tr>
+						<th>Book Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<input id="bookName" type="text" th:field="*{bookName}" />
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</fieldset>
+	</form>
+
+Response is : <span th:text="${response}"> My book is </span> 
+
+
+
+</body>
+</html>

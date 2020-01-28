@@ -1,0 +1,48 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+ 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+ 
+jar {
+	baseName = 'boot-gradle'
+	version = '0.0.1-SNAPSHOT'
+}
+ 
+repositories {
+	mavenCentral()
+}
+ 
+bootRepackage {
+    enabled = true
+}
+ 
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter',
+	'org.springframework.boot:spring-boot-starter-web',
+	'org.springframework.boot:spring-boot-starter-security',	
+	'org.springframework.boot:spring-boot-starter-thymeleaf',
+	'io.springfox:springfox-swagger2:2.6.1',
+	'com.github.tomakehurst:wiremock-standalone:2.6.0',
+	'org.springframework.boot:spring-boot-starter-activemq',
+	//'org.springframework.boot:spring-boot-starter-data-jpa',
+	'mysql:mysql-connector-java',
+	'org.apache.activemq:activemq-broker',
+	'com.google.code.gson:gson',
+	group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+	 
+	)
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.2.RELEASE'
+	
+	testImplementation 'junit:junit:4.12'
+}
